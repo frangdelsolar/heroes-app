@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-title>Search Hero</mat-card-title>
+    <mat-card-content>
+
+        <div class="searchForm">
+            <form [formGroup]="searchForm" (ngSubmit)="onSearchHero()">
+                <mat-form-field appearance="fill">
+                    <mat-label>Your hero's name</mat-label>
+                    <input formControlName="heroName" matInput placeholder="i. e. Batman">
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+                <span class="spacer"></span>
+                <button type="submit" mat-raised-button color="primary">Go!</button>
+            </form>
+        </div>
+        
+        <div class="heroes-list" fxLayout="row wrap" fxLayoutGap="27px">
+            <div fxFlex="15%" fxFlex.xs="100%" fxFlex.sm="30%" *ngFor="let hero of this.heroes" id="child-{{hero.id}}"> 
+                <app-hero-card [hero]="hero"></app-hero-card> 
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

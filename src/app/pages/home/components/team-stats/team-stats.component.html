@@ -1,0 +1,30 @@
+
+<mat-card>
+    <mat-card-title>Team Stats</mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row wrap" fxLayoutGap="27px">
+            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="30%"> 
+                <app-spinner title="Intelligence" [value]='intelligence'></app-spinner>
+            </div>
+            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="30%"> 
+                <app-spinner title="Strength" [value]='strength'></app-spinner>
+            </div>
+            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="30%"> 
+                <app-spinner title="Speed" [value]='speed'></app-spinner>
+            </div>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="27px">
+        
+            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="30%"> 
+                <app-spinner title="Durability" [value]='durability'></app-spinner>
+            </div>
+            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="30%"> 
+                <app-spinner title="Power" [value]='power'></app-spinner>
+            </div>
+            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="30%"> 
+                <app-spinner title="Combat" [value]='combat'></app-spinner>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+

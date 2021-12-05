@@ -1,0 +1,10 @@
+<mat-card class="content">
+    <mat-card-title>My Team</mat-card-title>
+    
+    <div fxLayout="row wrap" fxLayoutGap="27px">
+        <div fxFlex="15%" fxFlex.xs="100%" fxFlex.sm="30%" *ngFor="let hero of (this.heroes$ | async)" id="child-{{hero.id}}"> 
+            <app-hero-card [hero]="hero"></app-hero-card> 
+        </div>
+    </div>
+</mat-card>
+

@@ -1,0 +1,25 @@
+.hero-card {
+    max-width: 400px;
+    margin: 10px;
+}
+
+.good-hero{
+  background-image: url('src/app/assets/005-angel.png');
+  background-size: cover;
+}
+
+.bad-hero{
+  background-image: url('src/app/assets/002-devil-1.png');
+  background-size: cover;
+}
+
+.neutral-hero{
+  background-image: url('src/app/assets/angel-and-demon-.png');
+  background-size: cover;
+}
+
+.action-buttons {
+    padding-bottom: 20px;
+}
+
+

@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API_HEROES_URL: 'https://www.superheroapi.com/api.php/10224564861122306',
+  API_USERS_URL: 'https://5b16073f-c453-4b93-b1d4-21d7d9cead5c.mock.pstmn.io'
 };
 
 /*
