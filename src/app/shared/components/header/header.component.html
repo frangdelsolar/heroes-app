@@ -2,7 +2,7 @@
     <span>My Heroes</span>
     <span class="spacer"></span>
     <div>
-        <a mat-button [routerLink]="'/login'">Login</a>
-        <a mat-button (click)="onLogOut()">Logout</a>
+        <a mat-button *ngIf="!isAuth" [routerLink]="'/login'">Login</a>
+        <a mat-button *ngIf="isAuth" (click)="onLogOut()">Logout</a>
     </div>
 </mat-toolbar>

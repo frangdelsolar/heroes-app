@@ -1,12 +1,12 @@
 export type Gender = 'Male' | 'Female';
 
 export interface PowerStats {
-    intelligence: number,
-    strength: number,
-    speed: number,
-    durability: number,
-    power: number,
-    combat: number
+    intelligence: string,
+    strength: string,
+    speed: string,
+    durability: string,
+    power: string,
+    combat: string
 }
 
 export interface Biography {
@@ -47,7 +47,7 @@ export interface Hero {
     name: string,
     powerstats: PowerStats,
     biography: Biography,
-    appearence: Appearence,
+    appearance: Appearence,
     work: Work,
     connections: Connections,
     image: Image

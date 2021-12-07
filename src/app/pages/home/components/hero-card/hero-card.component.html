@@ -7,8 +7,16 @@
       <mat-card-subtitle>{{ hero.biography.publisher || "Unknown" }}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image [src]="hero.image.url" [alt]="hero.name">
+    <div class="stats">
+        <app-bar title="Intelligence" [value]="hero.powerstats.intelligence"></app-bar>
+        <app-bar title="Strength" [value]="hero.powerstats.strength"></app-bar>
+        <app-bar title="Speed" [value]="hero.powerstats.speed"></app-bar>
+        <app-bar title="Durability" [value]="hero.powerstats.durability"></app-bar>
+        <app-bar title="Power" [value]="hero.powerstats.power"></app-bar>
+        <app-bar title="Combat" [value]="hero.powerstats.combat"></app-bar>
+    </div>
     <mat-card-actions class="action-buttons">
-        <button mat-button>VIEW</button>
+        <button mat-button [routerLink]="['/hero', hero.id]">VIEW</button>
         <button mat-button (click)="addHero()">ADD</button>
         <button mat-button (click)="removeHero()">REMOVE</button>
     </mat-card-actions>

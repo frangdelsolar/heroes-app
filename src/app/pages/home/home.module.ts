@@ -13,6 +13,8 @@ import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { MyTeamComponent } from './components/my-team/my-team.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SpinnerComponent } from '@app/shared/components/spinner/spinner.component';
+import { BarComponent } from '@app/shared/components/bar/bar.component';
+import { HeroComponent } from '../hero/hero.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { SpinnerComponent } from '@app/shared/components/spinner/spinner.compone
     HeroCardComponent,
     MyTeamComponent,
     TeamStatsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    BarComponent,
+    HeroComponent
 
 
 

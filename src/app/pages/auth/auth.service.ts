@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User, UserResponse } from 'src/app/shared/models/user.interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class AuthService {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.checkToken();
   }
 
@@ -27,6 +29,7 @@ export class AuthService {
         map((res: UserResponse) => {
           this.saveToken(res.token);
           this.loggedIn.next(true);
+          this.router.navigate(['']);
           return res;
         }),
         catchError((err)=> this.handlerError(err))
@@ -36,6 +39,7 @@ export class AuthService {
   logout(): void{
     localStorage.removeItem('token');
     this.loggedIn.next(false);
+    this.router.navigate(['/login']);
   }
   
   private checkToken(): void{

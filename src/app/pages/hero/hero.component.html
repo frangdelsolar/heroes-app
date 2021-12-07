@@ -1,0 +1,61 @@
+<div class="flex-container">
+    <h1>{{hero.name}}</h1>
+    <div class="spacer"></div>
+    <a mat-button [routerLink]="'/'">Go back!</a>
+
+</div>
+
+<div class="flex-container">
+    <div class="col-1">
+        <img [src]="hero.image.url" [alt]="hero.name">
+    </div>
+
+    <div class="col-2">
+        <h2>Biography</h2>
+        <p>Full name: {{hero.biography.full_name || "Unknown"}}</p>
+        <div>
+            <p >Alter egos:</p> 
+            <ul>
+                <li *ngFor="let alter of hero.biography.alter_egos">{{alter || "Unknown"}}</li>
+            </ul>
+        </div>
+        <div>
+            <p >Aliases:</p> 
+            <ul>
+                <li *ngFor="let alias of hero.biography.aliases">{{alias || "Unknown"}}</li>
+            </ul>
+        </div>
+        <p>Place of Birth: {{hero.biography.place_of_birth || "Unknown"}}</p>
+        <p>First appearance: {{hero.biography.first_appearence || "Unknown"}}</p>
+        <p>Publisher: {{hero.biography.publisher || "Unknown"}}</p>
+
+        <h2>Work</h2>
+        <p>Occupation: {{hero.work.occupation || "Unknown"}}</p>
+        <p>Base: {{hero.work.base || "Unknown"}}</p>
+
+        <h2>Connections</h2>
+        <p>Group affiliation: {{hero.connections.group_affiliation || "Unknown"}}</p>
+        <p>relatives: {{hero.connections.relatives || "Unknown"}}</p>
+
+    </div>
+
+    <div class="col-3">
+        <h2>Appearance</h2>
+        <p>Gender: {{hero.appearance.gender || "Unknown"}}</p>
+        <p>Race: {{hero.appearance.race || "Unknown"}}</p>
+        <p>Height: {{hero.appearance.height[1] || "Unknown"}}</p>
+        <p>Wight: {{hero.appearance.weight[1] || "Unknown"}}</p>
+        <p>Eye color: {{hero.appearance.eye_color || "Unknown"}}</p>
+        <p>Hair color: {{hero.appearance.hair_color || "Unknown"}}</p>
+
+        <h2>PowerStats</h2>
+        <div class="stats">
+            <app-bar title="Intelligence" [value]="hero.powerstats.intelligence"></app-bar>
+            <app-bar title="Strength" [value]="hero.powerstats.strength"></app-bar>
+            <app-bar title="Speed" [value]="hero.powerstats.speed"></app-bar>
+            <app-bar title="Durability" [value]="hero.powerstats.durability"></app-bar>
+            <app-bar title="Power" [value]="hero.powerstats.power"></app-bar>
+            <app-bar title="Combat" [value]="hero.powerstats.combat"></app-bar>
+        </div>
+    </div>
+</div>

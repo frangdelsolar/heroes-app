@@ -21,10 +21,6 @@ export class HeroService {
   readonly heroes$ = this._heroes.asObservable();
   private heroes: Hero[] = [];
 
-
-  localHeroes: Hero[] = [];
-
-
   constructor(private http: HttpClient) { }
 
   getHero(id: number): Observable<Hero>{
@@ -78,7 +74,7 @@ export class HeroService {
   }
 
   getHeroesFromLocalStorage(){
-    this.localHeroes = [];
+    this.heroes = [];
     const storedHeroesList = localStorage.getItem('heroesList');
     let heroesIdList: number[] = [];
 
@@ -86,26 +82,15 @@ export class HeroService {
         heroesIdList = JSON.parse(storedHeroesList);
         for (let num of heroesIdList){
           this.getHero(num).subscribe(res=>{
-            this.addHero(res)
+            this.heroes.push(res);
+            this._heroes.next(Object.assign([], this.heroes));
           })
         }
     } 
   }
 
-  getStoredHeroes(): Observable<Hero[]>{
-    this.getHeroesFromLocalStorage();
-    return of(this.localHeroes);
-  }
-
-
   addHero(hero: Hero){
-
     let addToTeam: boolean = true;
-    
-    if (this.heroes.includes(hero)){
-      alert('This guy is in youre team already!');
-      addToTeam = false;
-    }
 
     let goodHeroes: number = 0;
     let badHeroes: number = 0;
@@ -113,7 +98,7 @@ export class HeroService {
 
     this.heroes.forEach((h, i)=>{
       if (h.id == hero.id) {
-        alert('This guy is in youre team already!');
+        alert('This guy is in your team already!');
         addToTeam = false;
       }
       
@@ -122,33 +107,42 @@ export class HeroService {
       else neutralHeroes++
     })
 
-    if(this.heroes.length >= 6) {
-      alert("You have only six slots for heroes in your team. Remove one to continue.")
-      addToTeam = false;
-    } else if (goodHeroes >= 3 && hero.biography.alignment=="good") {
-      alert("You have only three slots for good heroes in your team. Remove one to continue.")
-      addToTeam = false;
-    } else if (badHeroes >= 3 && hero.biography.alignment=="bad") {
-      alert("You have only three slots for bad heroes in your team. Remove one to continue.")
-      addToTeam = false;
+    if (addToTeam == true){
+      if(this.heroes.length >= 6) {
+        alert("You have only six slots for heroes in your team. Remove one to continue.")
+        addToTeam = false;
+      } else if (goodHeroes >= 3 && hero.biography.alignment == "good") {
+        alert("You have only three slots for good heroes in your team. Remove one to continue.")
+        addToTeam = false;
+      } else if (badHeroes >= 3 && hero.biography.alignment == "bad") {
+        alert("You have only three slots for bad heroes in your team. Remove one to continue.")
+        addToTeam = false;
+      }
     }
 
-    if (addToTeam==true){
+    if (addToTeam == true){
       this.heroes.push(hero);
       this._heroes.next(Object.assign([], this.heroes));
       this.storeHeroInLocalStorage(hero.id);
+      alert("You have added " + hero.name + " to your team of heroes!");
     }
 
   }
 
   removeHero(hero: Hero){
+    let isRemoved: boolean = false;
     this.heroes.forEach((h, i)=>{
       if(h.id === hero.id){
         this.heroes.splice(i, 1);
+        isRemoved = true;
       }
       this._heroes.next(Object.assign([], this.heroes));
     })
-    this.removeHeroFromLocalStorage(hero.id);
+    if (isRemoved){
+      this.removeHeroFromLocalStorage(hero.id);
+    } else {
+      alert("You can't remove someone that's not in your team!")
+    }
   }
 
 }

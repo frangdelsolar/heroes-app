@@ -2,7 +2,7 @@
 <mat-card>
     <mat-card-title>Team Stats</mat-card-title>
     <mat-card-content>
-        <div fxLayout="row wrap" fxLayoutGap="27px">
+        <div fxLayout="row wrap" fxLayoutGap="35px">
             <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="30%"> 
                 <app-spinner title="Intelligence" [value]='intelligence'></app-spinner>
             </div>
@@ -13,7 +13,7 @@
                 <app-spinner title="Speed" [value]='speed'></app-spinner>
             </div>
         </div>
-        <div fxLayout="row wrap" fxLayoutGap="27px">
+        <div fxLayout="row wrap" fxLayoutGap="35px">
         
             <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="30%"> 
                 <app-spinner title="Durability" [value]='durability'></app-spinner>
@@ -25,6 +25,11 @@
                 <app-spinner title="Combat" [value]='combat'></app-spinner>
             </div>
         </div>
+        <div class="details">
+            <h2>Weight average: {{weight}} kg</h2>
+            <h2>Height average: {{height}} cm</h2>
+        </div>
+
     </mat-card-content>
 </mat-card>
 

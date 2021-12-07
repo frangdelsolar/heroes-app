@@ -15,6 +15,7 @@ export class MyTeamComponent implements OnInit {
   constructor(private heroSvc: HeroService) { }
 
   ngOnInit(): void {
+      this.heroSvc.getHeroesFromLocalStorage();
       this.heroes$ = this.heroSvc.heroes$;
   }
 
